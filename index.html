@@ -9,216 +9,179 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background: #0b0b0f;
-  color: #eee;
-}
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+body { background:#0b0b0f; color:#eee; }
 
 /* LOGO */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.logo img {
-  width: 40px;
-}
-.logo span {
-  color: #d4af37;
-  font-weight: 600;
-}
+.logo { display:flex; align-items:center; gap:10px; }
+.logo img { width:40px; }
+.logo span { color:#d4af37; font-weight:600; }
 
 /* PRELOADER */
 #preloader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #0b0b0f;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
+  position:fixed; width:100%; height:100%;
+  background:#0b0b0f;
+  display:flex; justify-content:center; align-items:center;
+  z-index:2000;
 }
 #preloader img {
-  width: 120px;
-  animation: zoom 1.5s infinite alternate;
+  width:120px;
+  animation:zoom 1.5s infinite alternate;
 }
 @keyframes zoom {
-  from {transform: scale(1);}
-  to {transform: scale(1.1);}
+  from {transform:scale(1);}
+  to {transform:scale(1.1);}
 }
 
 /* NAV */
 nav {
-  background: rgba(10,10,15,0.9);
-  backdrop-filter: blur(10px);
-  padding: 20px 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  background:rgba(10,10,15,0.9);
+  backdrop-filter:blur(10px);
+  padding:20px 60px;
+  display:flex; justify-content:space-between;
+  align-items:center;
+  position:sticky; top:0; z-index:1000;
 }
 nav a {
-  color: #ccc;
-  margin-left: 25px;
-  text-decoration: none;
+  color:#ccc;
+  margin-left:25px;
+  text-decoration:none;
 }
-nav a:hover { color: #d4af37; }
+nav a:hover { color:#d4af37; }
 
-/* HERO SLIDER */
+/* HERO */
 .hero {
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
+  height:100vh;
+  position:relative;
+  overflow:hidden;
 }
-
 .slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 1s ease-in-out;
 }
-
-.slide.active {
-  opacity: 1;
-}
+.slide.active { opacity:1; }
 
 .hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  text-align: center;
-  z-index: 2;
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  z-index:2;
 }
-
-.hero-content h1 {
-  font-size: 60px;
-}
-.hero-content p {
-  margin: 20px 0;
-}
+.hero-content h1 { font-size:60px; }
+.hero-content p { margin:20px 0; }
 .hero-content button {
-  padding: 14px 35px;
-  background: #d4af37;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
+  padding:14px 35px;
+  background:#d4af37;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
 }
 
-/* OVERLAY */
 .hero::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  top: 0;
+  content:"";
+  position:absolute;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.6);
+  top:0;
 }
 
-/* REST (UNCHANGED) */
-section { padding: 80px 60px; }
-
+/* SECTIONS */
+section { padding:80px 60px; }
 .section-title h2 {
-  text-align: center;
-  color: #d4af37;
-  margin-bottom: 40px;
+  text-align:center;
+  color:#d4af37;
+  margin-bottom:40px;
 }
 
+/* ABOUT */
 .about {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
+  display:flex;
+  gap:40px;
+  flex-wrap:wrap;
 }
-
 .about img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 15px;
+  width:100%;
+  max-width:500px;
+  border-radius:15px;
 }
 
+/* ROOMS */
 .rooms {
-  display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
 }
-
 .room {
-  background: rgba(255,255,255,0.05);
-  padding: 20px;
-  border-radius: 15px;
-  flex: 1;
-  min-width: 260px;
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:15px;
+  flex:1;
+  min-width:260px;
 }
-
 .room img {
-  width: 100%;
-  border-radius: 10px;
+  width:100%;
+  border-radius:10px;
 }
 
+/* GALLERY */
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+  gap:20px;
 }
-
 .gallery img {
-  width: 100%;
-  border-radius: 15px;
+  width:100%;
+  border-radius:15px;
 }
 
+/* CONTACT */
 .contact {
-  background: #111;
-  text-align: center;
-  padding: 60px;
+  background:#111;
+  text-align:center;
+  padding:60px;
 }
 
+/* FLOAT BUTTONS */
 .whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  padding: 15px;
-  border-radius: 50%;
-  color: white;
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  padding:15px;
+  border-radius:50%;
+  color:white;
 }
 
 .social-popup {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
-
 .social-popup a {
-  width: 50px;
-  height: 50px;
-  background: #333;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+  width:50px;
+  height:50px;
+  background:#333;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
 }
 
+/* FOOTER */
 footer {
-  background: black;
-  text-align: center;
-  padding: 20px;
+  background:black;
+  text-align:center;
+  padding:20px;
 }
 </style>
 </head>
@@ -227,13 +190,13 @@ footer {
 
 <!-- PRELOADER -->
 <div id="preloader">
-  <img src="hlogo.png">
+  <img src="./hlogo.png">
 </div>
 
 <!-- NAV -->
 <nav>
   <div class="logo">
-    <img src="hlogo.png">
+    <img src="./hlogo.png">
     <span>Shangri-La View Hotel</span>
   </div>
   <div>
@@ -246,10 +209,10 @@ footer {
 
 <!-- HERO SLIDER -->
 <div class="hero">
-  <div class="slide active" style="background-image:url('hotel2.JPG')"></div>
-  <div class="slide" style="background-image:url('hotel4.JPG')"></div>
-  <div class="slide" style="background-image:url('hotel7.JPG')"></div>
-  <div class="slide" style="background-image:url('hotel10.JPG')"></div>
+  <div class="slide active" style="background-image:url('./hotel2.jpg')"></div>
+  <div class="slide" style="background-image:url('./hotel4.jpg')"></div>
+  <div class="slide" style="background-image:url('./hotel7.jpg')"></div>
+  <div class="slide" style="background-image:url('./hotel10.jpg')"></div>
 
   <div class="hero-content">
     <h1>Experience True Luxury</h1>
@@ -260,13 +223,11 @@ footer {
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="section-title">
-    <h2>About Us</h2>
-  </div>
+  <div class="section-title"><h2>About Us</h2></div>
   <div class="about">
-    <img src="hotel2.JPG">
+    <img src="./hotel2.jpg">
     <div>
-      <p>Shangri-La View Hotel offers premium comfort...</p>
+      <p>Shangri-La View Hotel offers premium comfort and relaxation in a serene environment.</p>
     </div>
   </div>
 </section>
@@ -275,11 +236,11 @@ footer {
 <section id="rooms">
   <div class="section-title"><h2>Our Facilities</h2></div>
   <div class="rooms">
-    <div class="room"><img src="vipbar.JPG"><h3>VIP Bar</h3></div>
-    <div class="room"><img src="room.JPG"><h3>Room</h3></div>
-    <div class="room"><img src="reception.JPG"><h3>Reception</h3></div>
-    <div class="room"><img src="lobby.JPG"><h3>Lobby</h3></div>
-    <div class="room"><img src="bushbar.JPG"><h3>Bush Bar</h3></div>
+    <div class="room"><img src="./vipbar.jpg"><h3>VIP Bar</h3></div>
+    <div class="room"><img src="./room.jpg"><h3>Room</h3></div>
+    <div class="room"><img src="./reception.jpg"><h3>Reception</h3></div>
+    <div class="room"><img src="./lobby.jpg"><h3>Lobby</h3></div>
+    <div class="room"><img src="./bushbar.jpg"><h3>Bush Bar</h3></div>
   </div>
 </section>
 
@@ -287,14 +248,14 @@ footer {
 <section>
   <div class="section-title"><h2>Gallery</h2></div>
   <div class="gallery">
-    <img src="hotel2.JPG">
-    <img src="hotel4.JPG">
-    <img src="hotel5.JPG">
-    <img src="hotel7.JPG">
-    <img src="hotel8.JPG">
-    <img src="hotel10.JPG">
-    <img src="hotel12.JPG">
-    <img src="hotel14.JPG">
+    <img src="./hotel2.jpg">
+    <img src="./hotel4.jpg">
+    <img src="./hotel5.jpg">
+    <img src="./hotel7.jpg">
+    <img src="./hotel8.jpg">
+    <img src="./hotel10.jpg">
+    <img src="./hotel12.jpg">
+    <img src="./hotel14.jpg">
   </div>
 </section>
 
@@ -303,22 +264,20 @@ footer {
   <h2>Contact Us</h2>
   <p><strong>Phone:</strong> +234 08110844173</p>
   <p><strong>Email:</strong> shangrilaviewhotel@gmail.com</p>
-  <p><strong>Address:</strong> Rumuosi Victory Estate, Airport Road, Port Harcourt, Rivers State, Nigeria</p>
-    <!-- GOOGLE MAP -->
-  <iframe src="https://maps.google.com/maps?q=Rumuosi%20Victory%20Estate%20Port%20Harcourt&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0; margin-top:20px;"></iframe>
+  <p><strong>Address:</strong> Port Harcourt, Nigeria</p>
+
+  <iframe src="https://maps.google.com/maps?q=Rumuosi%20Victory%20Estate%20Port%20Harcourt&t=&z=13&ie=UTF8&iwloc=&output=embed"
+  width="100%" height="300" style="border:0; margin-top:20px;"></iframe>
 </section>
 
-<!-- SOCIAL POPUP -->
+<!-- SOCIAL -->
 <div class="social-popup">
   <a href="https://wa.me/2348110844173" target="_blank"><i class="fab fa-whatsapp"></i></a>
   <a href="https://www.instagram.com/shangrilaviewhotel" target="_blank"><i class="fab fa-instagram"></i></a>
-  <a href="mailto:shangrilaviewhotel@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-  <a href="https://www.facebook.com/shangrilaviewhotel" target="_blank"><i class="fab fa-facebook-f"></i></a>
+  <a href="mailto:shangrilaviewhotel@gmail.com"><i class="fas fa-envelope"></i></a>
+  <a href="https://www.facebook.com/shangrilaviewhotel"><i class="fab fa-facebook-f"></i></a>
 </div>
 
-<a class="whatsapp" href="#">💬</a>
-
-<!-- FOOTER -->
 <footer>
   <p>© 2026 Shangri-La View Hotel | All Rights Reserved</p>
 </footer>
@@ -340,4 +299,4 @@ setInterval(() => {
 </script>
 
 </body>
-</html>
+  </html>
