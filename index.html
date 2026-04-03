@@ -335,22 +335,27 @@ footer {
   <p><strong>Address:</strong> Rumuosi Victory Estate, Airport Road, Port Harcourt, Rivers State, Nigeria</p>
 
   <iframe src="https://maps.google.com/maps?q=Rumuosi%20Victory%20Estate%20Port%20Harcourt&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0; margin-top:20px;"></iframe>
-</section>
-  <form action="https://formspree.io/f/maqlpaqk" method="POST">
-  
-  <label for="name">Name:</label><br>
-  <input type="text" id="name" name="name" required><br><br>
 
-  <label for="email">Email:</label><br>
-  <input type="email" id="email" name="email" required><br><br>
+  <!-- ✅ ADD THIS FORM -->
+  <form action="https://formspree.io/f/maqlpaqk" method="POST" style="margin-top:30px;">
+    
+    <input type="text" name="name" placeholder="Your Name" required 
+    style="width:100%; padding:12px; margin:10px 0; border-radius:8px; border:none;">
 
-  <label for="message">Message:</label><br>
-  <textarea id="message" name="message" rows="5" required></textarea><br><br>
+    <input type="email" name="email" placeholder="Your Email" required 
+    style="width:100%; padding:12px; margin:10px 0; border-radius:8px; border:none;">
 
-  <button type="submit">Send Message</button>
+    <textarea name="message" placeholder="Your Message" rows="5" required 
+    style="width:100%; padding:12px; margin:10px 0; border-radius:8px; border:none;"></textarea>
+
+    <button type="submit" 
+    style="padding:12px 25px; background:#d4af37; border:none; border-radius:25px; cursor:pointer;">
+      Send Message
+    </button>
 
   </form>
 
+</section>
 
 <!-- SOCIAL -->
 <div class="social-popup">
