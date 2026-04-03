@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shangri-La View Hotel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #f8f9fb;
+  color: #333;
+}
+
+/* NAVBAR */
+nav {
+  background: #0a0f2c;
+  color: white;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h2 {
+  color: #ff3c3c;
+}
+
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #ff3c3c;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  background: url('hotel.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-blend-mode: darken;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero p {
+  margin: 15px 0;
+}
+
+.hero button {
+  padding: 12px 25px;
+  background: #ff3c3c;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* SECTION */
+section {
+  padding: 60px 50px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title h2 {
+  color: #0a0f2c;
+}
+
+/* ABOUT */
+.about {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.about img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+/* ROOMS */
+.rooms {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.room {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 250px;
+}
+
+.room img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* CONTACT */
+.contact {
+  background: #0a0f2c;
+  color: white;
+  text-align: center;
+  padding: 50px;
+}
+
+.contact p {
+  margin: 10px 0;
+}
+
+/* FOOTER */
+footer {
+  background: #050817;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1 {
+    font-size: 30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <h2>Shangri-La View Hotel</h2>
+  <div>
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Luxury & Comfort Redefined</h1>
+    <p>Your perfect stay in Port Harcourt</p>
+    <button onclick="location.href='#contact'">Book Now</button>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-title">
+    <h2>About Us</h2>
+  </div>
+
+  <div class="about">
+    <img src="hotel.jpg" alt="Hotel Image">
+    <div class="about-text">
+      <p>
+        Shangri-La View Hotel offers premium comfort, security, and hospitality 
+        in the heart of Port Harcourt. Whether you're traveling for business or leisure, 
+        we provide a relaxing environment with top-tier services.
+      </p>
+      <p>
+        Enjoy modern rooms, 24/7 power supply, excellent customer service, 
+        and a peaceful atmosphere.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section id="rooms">
+  <div class="section-title">
+    <h2>Our Rooms</h2>
+  </div>
+
+  <div class="rooms">
+    <div class="room">
+      <img src="room1.jpg">
+      <h3>Standard Room</h3>
+      <p>Affordable comfort with essential amenities.</p>
+    </div>
+
+    <div class="room">
+      <img src="room2.jpg">
+      <h3>Deluxe Room</h3>
+      <p>Spacious luxury with modern design.</p>
+    </div>
+
+    <div class="room">
+      <img src="room3.jpg">
+      <h3>Executive Suite</h3>
+      <p>Top-class experience for premium guests.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <div class="section-title">
+    <h2>Gallery</h2>
+  </div>
+
+  <div class="gallery">
+    <img src="hotel.jpg">
+    <img src="room1.jpg">
+    <img src="room2.jpg">
+    <img src="room3.jpg">
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <p><strong>Phone:</strong> +234 08110844173</p>
+  <p><strong>Email:</strong> shangrilaviewhotel@gmail.com</p>
+  <p><strong>Address:</strong> Rumuosi Victory Estate, Airport Road, Port Harcourt, Rivers State, Nigeria</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Shangri-La View Hotel | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
