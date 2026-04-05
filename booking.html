@@ -11,7 +11,7 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: url('hotel7.JPG') no-repeat center center fixed;
+  background: url('hotel8.JPG') no-repeat center center fixed;
   background-size: cover;
   color: white;
 }
@@ -47,21 +47,21 @@ nav a {
   text-decoration: none;
 }
 
-/* CONTAINER */
+/* FORM CONTAINER */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-/* FORM CARD */
+/* FORM BOX */
 .form-box {
   background: rgba(19,44,92,0.9);
   padding: 40px;
   border-radius: 15px;
   width: 350px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
 }
 
 .form-box h2 {
@@ -70,7 +70,7 @@ nav a {
 }
 
 /* INPUTS */
-input, select {
+input, textarea {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
@@ -110,32 +110,32 @@ button:hover {
   <div>
     <a href="index.html">Home</a>
     <a href="booking.html">Booking</a>
+    <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact</a>
   </div>
 </nav>
 
-<!-- BOOKING FORM -->
+<!-- FORM -->
 <div class="container">
   <div class="form-box">
     <h2>Book Your Stay</h2>
 
-    <form>
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email Address" required>
+    <form action="https://formspree.io/f/maqlpaqk" method="POST">
+
+      <input type="text" name="name" placeholder="Full Name" required>
+
+      <input type="email" name="email" placeholder="Email Address" required>
 
       <label>Check-in</label>
-      <input type="date" required>
+      <input type="date" name="checkin" required>
 
       <label>Check-out</label>
-      <input type="date" required>
+      <input type="date" name="checkout" required>
 
-      <select>
-        <option>Luxury Room</option>
-        <option>VIP Room</option>
-        <option>Executive Suite</option>
-      </select>
+      <textarea name="message" placeholder="Additional Message (optional)"></textarea>
 
       <button type="submit">Reserve Now</button>
+
     </form>
   </div>
 </div>
