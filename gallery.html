@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - Shangri-La View Hotel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('hotel10.JPG') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+
+/* OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(5,10,30,0.85);
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(0,0,0,0.7);
+}
+
+nav img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+/* TITLE */
+.title {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.title h1 {
+  font-size: 40px;
+}
+
+/* GALLERY GRID */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+/* IMAGE CARD */
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+/* HOVER EFFECT */
+.gallery img:hover {
+  transform: scale(1.08);
+}
+
+/* OPTIONAL LIGHT OVERLAY EFFECT */
+.gallery img:hover {
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div style="display:flex; align-items:center; gap:10px;">
+    <img src="hlogo.png">
+    <h2 style="margin:0;">Shangri-La View Hotel</h2>
+  </div>
+
+  <div>
+    <a href="index.html">Home</a>
+    <a href="booking.html">Booking</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- TITLE -->
+<div class="title">
+  <h1>Our Gallery</h1>
+  <p>Explore the beauty of Shangri-La View Hotel</p>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery">
+
+  <img src="hotel2.JPG">
+  <img src="hotel4.JPG">
+  <img src="hotel5.JPG">
+  <img src="hotel7.JPG">
+  <img src="hotel8.JPG">
+  <img src="hotel10.JPG">
+  <img src="hotel12.JPG">
+  <img src="hotel14.JPG">
+
+</div>
+
+</body>
+</html>
