@@ -76,7 +76,7 @@ nav a {
   padding: 60px 0;
 }
 
-/* SLIDER (NEW) */
+/* ===== FIXED FACILITIES SLIDER ===== */
 .slider {
   overflow: hidden;
   width: 100%;
@@ -84,16 +84,18 @@ nav a {
 }
 
 .slide-track {
-  width: calc(340px * 6);
-  }
-  animation: scroll 20s linear infinite;
-}
-.slide {
-  width: 320px;   /* or 320px if you want more */
-  margin: 0 10px;
-}
+  display: flex;
+  width: calc(320px * 12); /* 12 slides total */
+  animation: scroll 25s linear infinite;
 }
 
+.slide {
+  width: 300px;           /* slightly wider (your request) */
+  margin: 0 10px;
+  flex-shrink: 0;         /* VERY IMPORTANT (prevents stacking) */
+}
+
+/* Image */
 .slide img {
   width: 100%;
   height: 200px;
@@ -101,6 +103,14 @@ nav a {
   display: block;
 }
 
+/* Text */
+.slide h3 {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+/* Animation */
 @keyframes scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -282,64 +292,64 @@ nav a {
     <div class="slide-track">
 
       <div class="slide">
-        <img src="room.JPG" class="full-img">
-        <h3 class="facility-title">Luxury Room</h3>
+        <img src="room.JPG">
+        <h3>Luxury Room</h3>
       </div>
 
       <div class="slide">
-        <img src="vipbar.JPG" class="full-img">
-        <h3 class="facility-title">VIP Bar</h3>
+        <img src="vipbar.JPG">
+        <h3>VIP Bar</h3>
       </div>
 
       <div class="slide">
-        <img src="lobby.JPG" class="full-img">
-        <h3 class="facility-title">Lobby</h3>
+        <img src="lobby.JPG">
+        <h3>Lobby</h3>
       </div>
       
       <div class="slide">
-        <img src="hotelFVV.jpg" class="full-img">
-        <h3 class="facility-title">HOTEL</h3>
+        <img src="hotelFVV.jpg">
+        <h3>HOTEL</h3>
       </div>
       
       <div class="slide">
-        <img src="wideR.JPG" class="full-img">
-        <h3 class="facility-title">RECEPTION</h3>
+        <img src="wideR.JPG">
+        <h3>RECEPTION</h3>
       </div>
 
       <div class="slide">
-        <img src="bushbar.JPG" class="full-img">
-        <h3 class="facility-title">BUSH BAR</h3>
+        <img src="bushbar.JPG">
+        <h3>BUSH BAR</h3>
       </div>
 
-      <!-- DUPLICATE FOR SMOOTH LOOP -->
+      <!-- DUPLICATE FOR LOOP -->
       <div class="slide">
-        <img src="room.JPG" class="full-img">
-        <h3 class="facility-title">Luxury Room</h3>
-      </div>
-
-      <div class="slide">
-        <img src="vipbar.JPG" class="full-img">
-        <h3 class="facility-title">VIP Bar</h3>
+        <img src="room.JPG">
+        <h3>Luxury Room</h3>
       </div>
 
       <div class="slide">
-        <img src="lobby.JPG" class="full-img">
-        <h3 class="facility-title">Lobby</h3>
+        <img src="vipbar.JPG">
+        <h3>VIP Bar</h3>
+      </div>
+
+      <div class="slide">
+        <img src="lobby.JPG">
+        <h3>Lobby</h3>
       </div>
       
       <div class="slide">
-        <img src="hotelFV.JPG" class="full-img">
-        <h3 class="facility-title">SHANGRILAVIEWHOTEL</h3>
+        <img src="hotelFV.JPG">
+        <h3>SHANGRILAVIEW HOTEL</h3>
       </div>
       
       <div class="slide">
-        <img src="wideR.JPG" class="full-img">
-        <h3 class="facility-title">RECEPTION</h3>
+        <img src="wideR.JPG">
+        <h3>RECEPTION</h3>
       </div>
 
       <div class="slide">
-        <img src="bushbar.JPG" class="full-img">
-        <h3 class="facility-title">BUSH BAR</h3>
+        <img src="bushbar.JPG">
+        <h3>BUSH BAR</h3>
       </div>
 
     </div>
