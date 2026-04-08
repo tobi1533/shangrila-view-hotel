@@ -138,6 +138,30 @@ nav a {
   margin: 10px 0 20px;
   color: white;
   }
+  /* Make slider show ONE item at a time */
+.slider {
+  overflow: hidden;
+  width: 100%;
+}
+
+.slide-track {
+  display: flex;
+}
+
+/* Each slide takes full screen width */
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Image fills the slide */
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 </style>
 
 </head>
