@@ -20,14 +20,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
-
-// CHECK LOGIN
-auth.onAuthStateChanged(user => {
-  if (!user) {
-    alert("Please login first");
-    window.location.href = "login.html";
-  }
-});
 </script>
 
 <style>
@@ -59,12 +51,10 @@ nav {
   background: rgba(0,0,0,0.7);
 }
 
-/* ✅ LOGO SIZE FIX */
 nav img {
   width: 65px;
   height: auto;
   border-radius: 50%;
-  display: block;
 }
 
 nav a {
@@ -73,7 +63,7 @@ nav a {
   text-decoration: none;
 }
 
-/* FORM CONTAINER */
+/* FORM */
 .container {
   display: flex;
   justify-content: center;
@@ -81,7 +71,6 @@ nav a {
   min-height: 100vh;
 }
 
-/* FORM BOX */
 .form-box {
   background: rgba(19,44,92,0.9);
   padding: 40px;
@@ -90,39 +79,22 @@ nav a {
   box-shadow: 0 0 25px rgba(0,0,0,0.6);
 }
 
-.form-box h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* INPUTS */
 input, textarea, select {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
   border-radius: 8px;
   border: none;
-  font-family: 'Poppins', sans-serif;
 }
 
-/* BUTTON */
 button {
   width: 100%;
   padding: 12px;
   background: #d4af37;
   border: none;
   border-radius: 25px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
 }
 
-button:hover {
-  background: #facc15;
-  transform: scale(1.05);
-}
-
-/* WHATSAPP BUTTON */
 .whatsapp-btn {
   display: block;
   text-align: center;
@@ -132,16 +104,8 @@ button:hover {
   color: white;
   border-radius: 25px;
   text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.whatsapp-btn:hover {
-  background: #1ebe5d;
-  transform: scale(1.03);
 }
 </style>
-
 </head>
 
 <body>
@@ -149,7 +113,7 @@ button:hover {
 <!-- NAV -->
 <nav>
   <div style="display:flex; align-items:center; gap:10px;">
-    <img src="hlogo.png" alt="Hotel Logo">
+    <img src="hlogo.png">
     <h2 style="margin:0;">Shangri-La View Hotel</h2>
   </div>
 
@@ -158,8 +122,12 @@ button:hover {
     <a href="booking.html">Booking</a>
     <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact</a>
-    <a href="login.html">Login</a>
-    <a href="#" onclick="logout()">Logout</a>
+
+    <!-- ✅ USER DISPLAY -->
+    <span id="userEmail" style="margin-left:20px;"></span>
+
+    <a href="login.html" id="loginLink">Login</a>
+    <a href="#" onclick="logout()" id="logoutLink" style="display:none;">Logout</a>
   </div>
 </nav>
 
@@ -169,12 +137,10 @@ button:hover {
     <h2>Book Your Stay</h2>
 
     <form action="https://formspree.io/f/maqlpaqk" method="POST">
-
       <input type="text" name="name" placeholder="Full Name" required>
       <input type="email" name="email" placeholder="Email Address" required>
       <input type="tel" name="phone" placeholder="Phone Number" required>
 
-      <label>Room Type</label>
       <select name="room" required>
         <option value="">Select Room Type</option>
         <option>Luxury Room</option>
@@ -182,34 +148,45 @@ button:hover {
         <option>Standard Room</option>
       </select>
 
-      <label>Check-in</label>
       <input type="date" name="checkin" required>
-
-      <label>Check-out</label>
       <input type="date" name="checkout" required>
 
-      <textarea name="message" placeholder="Additional Message (optional)"></textarea>
+      <textarea name="message" placeholder="Additional Message"></textarea>
 
       <button type="submit">Reserve Now</button>
-
     </form>
 
-    <!-- WHATSAPP -->
-    <a href="https://wa.me/2348110844173" class="whatsapp-btn" target="_blank">
-      Book via WhatsApp
-    </a>
-
+    <a href="https://wa.me/2348110844173" class="whatsapp-btn">Book via WhatsApp</a>
   </div>
 </div>
 
-<!-- ✅ LOGOUT SCRIPT -->
+<!-- ✅ ALL LOGIC IN ONE PLACE -->
 <script>
+
+// 🔐 Protect page
+auth.onAuthStateChanged(user => {
+  const userEmail = document.getElementById("userEmail");
+  const loginLink = document.getElementById("loginLink");
+  const logoutLink = document.getElementById("logoutLink");
+
+  if (!user) {
+    alert("Please login first");
+    window.location.href = "login.html";
+  } else {
+    userEmail.innerText = user.email;
+    loginLink.style.display = "none";
+    logoutLink.style.display = "inline";
+  }
+});
+
+// 🚪 Logout
 function logout() {
   firebase.auth().signOut().then(() => {
     alert("Logged out");
     window.location.href = "login.html";
   });
 }
+
 </script>
 
 </body>
