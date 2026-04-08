@@ -36,9 +36,12 @@ nav {
   background: rgba(0,0,0,0.7);
 }
 
+/* ✅ LOGO FIX (consistent across all pages) */
 nav img {
-  width: 40px;
+  width: 65px;
+  height: auto;
   border-radius: 50%;
+  display: block;
 }
 
 nav a {
@@ -70,12 +73,13 @@ nav a {
 }
 
 /* INPUTS */
-input, textarea {
+input, textarea, select {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
   border-radius: 8px;
   border: none;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* BUTTON */
@@ -94,6 +98,25 @@ button:hover {
   background: #facc15;
   transform: scale(1.05);
 }
+
+/* WHATSAPP BUTTON */
+.whatsapp-btn {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  padding: 12px;
+  background: #25D366;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: scale(1.03);
+}
 </style>
 
 </head>
@@ -103,7 +126,7 @@ button:hover {
 <!-- NAV -->
 <nav>
   <div style="display:flex; align-items:center; gap:10px;">
-    <img src="hlogo.png">
+    <img src="hlogo.png" alt="Hotel Logo">
     <h2 style="margin:0;">Shangri-La View Hotel</h2>
   </div>
 
@@ -126,6 +149,16 @@ button:hover {
 
       <input type="email" name="email" placeholder="Email Address" required>
 
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+
+      <label>Room Type</label>
+      <select name="room" required>
+        <option value="">Select Room Type</option>
+        <option>Luxury Room</option>
+        <option>VIP Room</option>
+        <option>Standard Room</option>
+      </select>
+
       <label>Check-in</label>
       <input type="date" name="checkin" required>
 
@@ -137,6 +170,12 @@ button:hover {
       <button type="submit">Reserve Now</button>
 
     </form>
+
+    <!-- WHATSAPP QUICK BOOK -->
+    <a href="https://wa.me/2348110844173" class="whatsapp-btn" target="_blank">
+      Book via WhatsApp
+    </a>
+
   </div>
 </div>
 
