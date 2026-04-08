@@ -36,9 +36,18 @@ nav {
   background: rgba(0,0,0,0.7);
 }
 
+/* ✅ CLEAN LOGO FIX (no stretching) */
 nav img {
-  width: 40px;
+  width: 70px;
+  height: auto;       /* keeps original proportions */
   border-radius: 50%;
+}
+
+/* slight alignment improvement */
+nav div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 nav a {
@@ -133,7 +142,7 @@ button:hover {
 
 <!-- NAV -->
 <nav>
-  <div style="display:flex; align-items:center; gap:10px;">
+  <div>
     <img src="hlogo.png">
     <h2 style="margin:0;">Shangri-La View Hotel</h2>
   </div>
