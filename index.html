@@ -108,6 +108,36 @@ nav a {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+  /* Remove box feel */
+.slide {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border-radius: 0;
+}
+
+/* Make image full screen width */
+.full-img {
+  width: 100vw;
+  height: auto;
+  display: block;
+  margin-left: calc(-50vw + 50%);
+}
+
+/* Optional: make it look premium */
+.slide {
+  position: relative;
+}
+
+/* Text styling */
+.facility-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 10px 0 20px;
+  color: white;
+  }
 </style>
 
 </head>
@@ -138,7 +168,7 @@ nav a {
   </div>
 </header>
 
-<!-- SECTION (UPDATED TO SLIDER) -->
+<!-- SECTION (UPDATED TO FULL WIDTH SLIDER) -->
 <section class="section">
   <h2>Our Facilities</h2>
 
@@ -146,34 +176,50 @@ nav a {
     <div class="slide-track">
 
       <div class="slide">
-        <img src="room.JPG">
-        <h3>Luxury Room</h3>
+        <img src="room.JPG" class="full-img">
+        <h3 class="facility-title">Luxury Room</h3>
       </div>
 
       <div class="slide">
-        <img src="vipbar.JPG">
-        <h3>VIP Bar</h3>
+        <img src="vipbar.JPG" class="full-img">
+        <h3 class="facility-title">VIP Bar</h3>
       </div>
 
       <div class="slide">
-        <img src="lobby.JPG">
-        <h3>Lobby</h3>
+        <img src="lobby.JPG" class="full-img">
+        <h3 class="facility-title">Lobby</h3>
+      </div>
+      <div class="slide">
+        <img src="hotelFV.JPG" class="full-img">
+        <h3 class="facility-title">SHANGRILAVIEWHOTEL</h3>
+      </div>
+      <div class="slide">
+        <img src="wideR.JPG" class="full-img">
+        <h3 class="facility-title">RECEPTION</h3>
       </div>
 
       <!-- DUPLICATE FOR SMOOTH LOOP -->
       <div class="slide">
-        <img src="room.JPG">
-        <h3>Luxury Room</h3>
+        <img src="room.JPG" class="full-img">
+        <h3 class="facility-title">Luxury Room</h3>
       </div>
 
       <div class="slide">
-        <img src="vipbar.JPG">
-        <h3>VIP Bar</h3>
+        <img src="vipbar.JPG" class="full-img">
+        <h3 class="facility-title">VIP Bar</h3>
       </div>
 
       <div class="slide">
-        <img src="lobby.JPG">
-        <h3>Lobby</h3>
+        <img src="lobby.JPG" class="full-img">
+        <h3 class="facility-title">Lobby</h3>
+      </div>
+      <div class="slide">
+        <img src="hotelFV.JPG" class="full-img">
+        <h3 class="facility-title">SHANGRILAVIEWHOTEL</h3>
+      </div>
+      <div class="slide">
+        <img src="wideR.JPG" class="full-img">
+        <h3 class="facility-title">RECEPTION</h3>
       </div>
 
     </div>
