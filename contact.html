@@ -68,8 +68,29 @@ nav a {
   margin-bottom: 20px;
 }
 
-.info-box p {
-  margin: 10px 0;
+/* ICON BUTTONS */
+.contact-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.icon-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #d4af37;
+  text-decoration: none;
+  font-size: 22px;
+  transition: 0.3s;
+}
+
+.icon-btn:hover {
+  background: #facc15;
+  transform: scale(1.1);
 }
 
 /* FORM */
@@ -130,24 +151,23 @@ button:hover {
 
   <!-- CONTACT DETAILS -->
   <div class="info-box">
-    <h2>Contact Information</h2>
+    <h2>Contact Us</h2>
 
-    <p><strong>Phone:</strong> +234 08110844173</p>
+    <p>Tap any icon to reach us instantly</p>
 
-    <p><strong>Email:</strong> shangrilaviewhotel@gmail.com</p>
+    <div class="contact-icons">
+      <a href="tel:+2348110844173" class="icon-btn">📞</a>
+      <a href="https://wa.me/2348110844173" class="icon-btn" target="_blank">💬</a>
+      <a href="mailto:shangrilaviewhotel@gmail.com" class="icon-btn">✉️</a>
+    </div>
 
-    <p><strong>WhatsApp:</strong> +234 08110844173</p>
-
-    <p><strong>Instagram:</strong>shangrilaviewhotel@gmail.com</p>
-
-    <p><strong>Location:</strong> Port Harcourt, Rivers State</p>
+    <p style="margin-top:20px;"><strong>Location:</strong> Port Harcourt, Rivers State</p>
   </div>
 
   <!-- MESSAGE FORM -->
   <div class="form-box">
     <h2>Send Us a Message</h2>
 
-    <!-- CONNECTED TO YOUR GMAIL -->
     <form action="https://formspree.io/f/maqlpaqk" method="POST">
 
       <input type="text" name="name" placeholder="Your Name" required>
@@ -164,4 +184,4 @@ button:hover {
 </div>
 
 </body>
-         </html>
+</html>
