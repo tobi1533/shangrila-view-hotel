@@ -85,23 +85,17 @@ nav a {
 }
 
 .slide-track {
-  display: flex;
-  width: calc(250px * 6);
-  animation: scroll 20s linear infinite;
+  width: calc(100% * 6);
 }
 
 .slide {
-  width: 250px;
-  margin: 0 15px;
-  text-align: center;
-  background: rgba(19,44,92,0.85);
-  padding: 15px;
-  border-radius: 10px;
+  width: 100%;
 }
 
 .slide img {
   width: 100%;
-  border-radius: 10px;
+  height: 200px;        /* keeps it from being too tall */
+  object-fit: cover;    /* makes it look clean */
 }
 
 @keyframes scroll {
