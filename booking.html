@@ -156,7 +156,7 @@ button {
 
 <script>
 
-// 🔥 FINAL FIX
+// ✅ PROPER AUTH HANDLING (NO FALSE REDIRECT)
 auth.onAuthStateChanged(function(user) {
   const userEmail = document.getElementById("userEmail");
   const loginLink = document.getElementById("loginLink");
@@ -167,12 +167,10 @@ auth.onAuthStateChanged(function(user) {
     loginLink.style.display = "none";
     logoutLink.style.display = "inline";
   } else {
-    // ⏳ WAIT before redirect (THIS FIXES YOUR ISSUE)
-    setTimeout(() => {
-      if (!auth.currentUser) {
-        window.location.href = "login.html";
-      }
-    }, 1500);
+    // Only redirect AFTER Firebase finishes checking
+    if (auth.currentUser === null) {
+      window.location.href = "login.html";
+    }
   }
 });
 
