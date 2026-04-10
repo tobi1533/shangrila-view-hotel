@@ -89,7 +89,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// signup
+// SIGNUP
 function signup() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -99,7 +99,7 @@ function signup() {
     .catch(e => alert(e.message));
 }
 
-// login
+// LOGIN
 function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -114,25 +114,34 @@ function login() {
 // GOOGLE LOGIN
 function googleLogin() {
   const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider)
-  .then((result) => {
-    window.location.href = "booking.html";
-  })
-  .catch((error) => {
-    alert(error.message);
-  });
+
+  const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    auth.signInWithRedirect(provider);
+  } else {
+    auth.signInWithPopup(provider)
+      .then(() => {
+        window.location.href = "booking.html";
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
 }
 
-// handle redirect
-auth.getRedirectResult()
-  .then((result) => {
-    if (result.user) {
-      window.location.href = "booking.html";
-    }
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// HANDLE REDIRECT RESULT (MOBILE FIX)
+window.onload = function () {
+  auth.getRedirectResult()
+    .then((result) => {
+      if (result.user) {
+        window.location.href = "booking.html";
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 </script>
 
 </body>
