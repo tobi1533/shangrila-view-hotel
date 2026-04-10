@@ -22,7 +22,6 @@ body {
   color: white;
 }
 
-/* CONTAINER */
 .container {
   background: rgba(255,255,255,0.06);
   backdrop-filter: blur(12px);
@@ -33,12 +32,10 @@ body {
   box-shadow: 0 0 30px rgba(0,0,0,0.6);
 }
 
-/* TITLE */
 h2 {
   margin-bottom: 20px;
 }
 
-/* INPUTS */
 input {
   width: 100%;
   padding: 12px;
@@ -49,7 +46,6 @@ input {
   font-family: 'Poppins', sans-serif;
 }
 
-/* BUTTONS */
 button {
   width: 100%;
   padding: 12px;
@@ -61,7 +57,6 @@ button {
   border: none;
 }
 
-/* SIGN UP BUTTON */
 .signup-btn {
   background: transparent;
   border: 1px solid white;
@@ -73,7 +68,6 @@ button {
   color: black;
 }
 
-/* LOGIN BUTTON */
 .login-btn {
   background: #d4af37;
 }
@@ -82,9 +76,15 @@ button {
   background: #facc15;
   transform: scale(1.05);
 }
-</style>
 
+/* Google button */
+.google-btn {
+  background: #fff;
+  color: #000;
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
@@ -97,6 +97,9 @@ button {
 <button class="signup-btn" onclick="signup()">Sign Up</button>
 <button class="login-btn" onclick="login()">Login</button>
 
+<!-- Google Login -->
+<button class="google-btn" onclick="googleLogin()">Continue with Google</button>
+
 </div>
 
 <script>
@@ -106,7 +109,6 @@ const firebaseConfig = {
   projectId: "shangrilaviewhotel-d0b66"
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
@@ -132,6 +134,24 @@ function login() {
     })
     .catch(e => alert(e.message));
 }
+
+// GOOGLE LOGIN (IMPORTANT: redirect for mobile)
+function googleLogin() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithRedirect(provider);
+}
+
+// HANDLE REDIRECT RESULT (VERY IMPORTANT)
+auth.getRedirectResult()
+  .then((result) => {
+    if (result.user) {
+      alert("Welcome " + result.user.displayName);
+      window.location.href = "booking.html";
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 </script>
 
 </body>
