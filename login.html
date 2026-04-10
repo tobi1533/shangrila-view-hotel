@@ -92,6 +92,14 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
+// ✅ CHECK LOGIN STATE (NO FORCE REDIRECT LOOP)
+auth.onAuthStateChanged(function(user) {
+  if (user) {
+    console.log("User already logged in:", user.email);
+    // Do NOT auto-redirect here to avoid loop issues
+  }
+});
+
 // SIGNUP
 function signup() {
   const email = document.getElementById("email").value;
@@ -103,7 +111,9 @@ function signup() {
   }
 
   auth.createUserWithEmailAndPassword(email, password)
-    .then(() => alert("Account created successfully"))
+    .then(() => {
+      window.location.href = "booking.html";
+    })
     .catch(e => alert(e.message));
 }
 
@@ -124,7 +134,7 @@ function login() {
     .catch(e => alert(e.message));
 }
 
-// GOOGLE LOGIN (FULLY FIXED)
+// GOOGLE LOGIN
 function googleLogin() {
   const provider = new firebase.auth.GoogleAuthProvider();
 
