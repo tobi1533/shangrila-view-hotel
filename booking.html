@@ -7,15 +7,18 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- ✅ Firebase Scripts -->
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
 <script>
 const firebaseConfig = {
-  apiKey: "AIzaSyCvcC5ysf6JpJlwmUJBEvXZBl-NSiVD7pw",
-  authDomain: "shangrilaviewhotel-d0b66.firebaseapp.com",
-  projectId: "shangrilaviewhotel-d0b66"
+  apiKey: "AIzaSyDhwIAmuZrY5Xqo6Ql7LDKxrPiklpG5GTE",
+  authDomain: "shangrila-booking.firebaseapp.com",
+  projectId: "shangrila-booking",
+  storageBucket: "shangrila-booking.appspot.com",
+  messagingSenderId: "981170210173",
+  appId: "1:981170210173:web:4d74cb3f6109fe1c0a3814"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -31,7 +34,6 @@ body {
   color: white;
 }
 
-/* OVERLAY */
 body::before {
   content: "";
   position: fixed;
@@ -43,7 +45,6 @@ body::before {
   z-index: -1;
 }
 
-/* NAV */
 nav {
   display: flex;
   justify-content: space-between;
@@ -53,7 +54,6 @@ nav {
 
 nav img {
   width: 65px;
-  height: auto;
   border-radius: 50%;
 }
 
@@ -63,7 +63,6 @@ nav a {
   text-decoration: none;
 }
 
-/* FORM */
 .container {
   display: flex;
   justify-content: center;
@@ -76,7 +75,6 @@ nav a {
   padding: 40px;
   border-radius: 15px;
   width: 350px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.6);
 }
 
 input, textarea, select {
@@ -110,7 +108,6 @@ button {
 
 <body>
 
-<!-- NAV -->
 <nav>
   <div style="display:flex; align-items:center; gap:10px;">
     <img src="hlogo.png">
@@ -123,7 +120,6 @@ button {
     <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact</a>
 
-    <!-- ✅ USER DISPLAY -->
     <span id="userEmail" style="margin-left:20px;"></span>
 
     <a href="login.html" id="loginLink">Login</a>
@@ -131,7 +127,6 @@ button {
   </div>
 </nav>
 
-<!-- FORM -->
 <div class="container">
   <div class="form-box">
     <h2>Book Your Stay</h2>
@@ -160,29 +155,26 @@ button {
   </div>
 </div>
 
-<!-- ✅ ALL LOGIC IN ONE PLACE -->
 <script>
 
-// 🔐 Protect page
-auth.onAuthStateChanged(user => {
+// ✅ CORRECT AUTH HANDLING
+auth.onAuthStateChanged(function(user) {
   const userEmail = document.getElementById("userEmail");
   const loginLink = document.getElementById("loginLink");
   const logoutLink = document.getElementById("logoutLink");
 
-  if (!user) {
-    alert("Please login first");
-    window.location.href = "login.html";
-  } else {
+  if (user) {
     userEmail.innerText = user.email;
     loginLink.style.display = "none";
     logoutLink.style.display = "inline";
+  } else {
+    window.location.href = "login.html";
   }
 });
 
 // 🚪 Logout
 function logout() {
-  firebase.auth().signOut().then(() => {
-    alert("Logged out");
+  auth.signOut().then(() => {
     window.location.href = "login.html";
   });
 }
