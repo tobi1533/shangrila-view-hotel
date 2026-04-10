@@ -77,7 +77,6 @@ button {
   transform: scale(1.05);
 }
 
-/* Google button */
 .google-btn {
   background: #fff;
   color: #000;
@@ -105,9 +104,8 @@ button {
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyCvcC5ysf6JpJlwmUJBEvXZBl-NSiVD7pw",
-  authDomain: "shangrilaviewhotel-d0b66.web.app",
+  authDomain: "shangrilaviewhotel-d0b66.firebaseapp.com",
   projectId: "shangrilaviewhotel-d0b66"
-};
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -136,23 +134,19 @@ function login() {
     .catch(e => alert(e.message));
 }
 
-// GOOGLE LOGIN (IMPORTANT: redirect for mobile)
+// GOOGLE LOGIN (redirect method for mobile)
 function googleLogin() {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithRedirect(provider);
 }
 
-// HANDLE REDIRECT RESULT (VERY IMPORTANT)
-auth.getRedirectResult()
-  .then((result) => {
-    if (result.user) {
-      alert("Welcome " + result.user.displayName);
-      window.location.href = "booking.html";
-    }
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// HANDLE LOGIN RESULT (CORRECT METHOD)
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    alert("Welcome " + user.displayName);
+    window.location.href = "booking.html";
+  }
+});
 </script>
 
 </body>
