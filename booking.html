@@ -7,7 +7,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 
@@ -157,7 +156,7 @@ button {
 
 <script>
 
-// ✅ CORRECT AUTH HANDLING
+// 🔥 FINAL FIX
 auth.onAuthStateChanged(function(user) {
   const userEmail = document.getElementById("userEmail");
   const loginLink = document.getElementById("loginLink");
@@ -168,7 +167,12 @@ auth.onAuthStateChanged(function(user) {
     loginLink.style.display = "none";
     logoutLink.style.display = "inline";
   } else {
-    window.location.href = "login.html";
+    // ⏳ WAIT before redirect (THIS FIXES YOUR ISSUE)
+    setTimeout(() => {
+      if (!auth.currentUser) {
+        window.location.href = "login.html";
+      }
+    }, 1500);
   }
 });
 
