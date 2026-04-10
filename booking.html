@@ -156,25 +156,30 @@ button {
 
 <script>
 
-// ✅ PROPER AUTH HANDLING (NO FALSE REDIRECT)
+let checkedAuth = false;
+
 auth.onAuthStateChanged(function(user) {
   const userEmail = document.getElementById("userEmail");
   const loginLink = document.getElementById("loginLink");
   const logoutLink = document.getElementById("logoutLink");
+
+  checkedAuth = true;
 
   if (user) {
     userEmail.innerText = user.email;
     loginLink.style.display = "none";
     logoutLink.style.display = "inline";
   } else {
-    // Only redirect AFTER Firebase finishes checking
-    if (auth.currentUser === null) {
-      window.location.href = "login.html";
-    }
+    // wait a bit ONLY after Firebase confirms no user
+    setTimeout(() => {
+      if (checkedAuth && !auth.currentUser) {
+        window.location.href = "login.html";
+      }
+    }, 1200);
   }
 });
 
-// 🚪 Logout
+// Logout
 function logout() {
   auth.signOut().then(() => {
     window.location.href = "login.html";
