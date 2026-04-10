@@ -7,23 +7,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyDhwIAmuZrY5Xqo6Ql7LDKxrPiklpG5GTE",
-  authDomain: "shangrila-booking.firebaseapp.com",
-  projectId: "shangrila-booking",
-  storageBucket: "shangrila-booking.appspot.com",
-  messagingSenderId: "981170210173",
-  appId: "1:981170210173:web:4d74cb3f6109fe1c0a3814"
-};
-
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-</script>
-
 <style>
 body {
   margin: 0;
@@ -118,11 +101,6 @@ button {
     <a href="booking.html">Booking</a>
     <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact</a>
-
-    <span id="userEmail" style="margin-left:20px;"></span>
-
-    <a href="login.html" id="loginLink">Login</a>
-    <a href="#" onclick="logout()" id="logoutLink" style="display:none;">Logout</a>
   </div>
 </nav>
 
@@ -153,40 +131,6 @@ button {
     <a href="https://wa.me/2348110844173" class="whatsapp-btn">Book via WhatsApp</a>
   </div>
 </div>
-
-<script>
-
-let checkedAuth = false;
-
-auth.onAuthStateChanged(function(user) {
-  const userEmail = document.getElementById("userEmail");
-  const loginLink = document.getElementById("loginLink");
-  const logoutLink = document.getElementById("logoutLink");
-
-  checkedAuth = true;
-
-  if (user) {
-    userEmail.innerText = user.email;
-    loginLink.style.display = "none";
-    logoutLink.style.display = "inline";
-  } else {
-    // wait a bit ONLY after Firebase confirms no user
-    setTimeout(() => {
-      if (checkedAuth && !auth.currentUser) {
-        window.location.href = "login.html";
-      }
-    }, 1200);
-  }
-});
-
-// Logout
-function logout() {
-  auth.signOut().then(() => {
-    window.location.href = "login.html";
-  });
-}
-
-</script>
 
 </body>
 </html>
