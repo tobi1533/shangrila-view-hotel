@@ -7,7 +7,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- ✅ FIREBASE -->
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
@@ -139,10 +139,7 @@ body {
 <!-- LOGIN PAGE -->
 <div id="loginPage">
   <div class="login-box">
-
-    <!-- ✅ LOGO -->
     <img src="images/logo.png" style="width:80px; margin-bottom:10px;">
-
     <h2>Admin Login</h2>
 
     <input type="email" id="email" placeholder="Admin Email">
@@ -155,8 +152,6 @@ body {
 <!-- DASHBOARD -->
 <div id="dashboard">
   <div class="sidebar">
-
-    <!-- ✅ LOGO -->
     <img src="images/logo.png" style="width:120px; margin-bottom:15px;">
     <h3>Admin Panel</h3>
 
@@ -166,6 +161,11 @@ body {
     <a href="#">Rooms</a>
     <a href="#">Messages</a>
     <a href="#">Settings</a>
+
+    <!-- COMPANY EMAIL DISPLAY -->
+    <p style="font-size:12px; margin-top:20px;">
+      📧 shangrilaviewhotel@gmail.com
+    </p>
 
     <button class="logout" onclick="logout()">Logout</button>
   </div>
@@ -213,7 +213,7 @@ body {
 
 <script>
 
-// 🔥 FIREBASE CONFIG
+// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyDhwIAmuZrY5Xqo6Ql7LDKxrPiklpG5GTE",
   authDomain: "shangrila-booking.firebaseapp.com",
@@ -224,7 +224,6 @@ const firebaseConfig = {
   measurementId: "G-ZYB3J8BW72"
 };
 
-// INIT
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
@@ -237,8 +236,8 @@ function login() {
   auth.signInWithEmailAndPassword(email, password)
   .then((userCredential) => {
 
-    // 🔐 RESTRICT TO ADMIN
-    if(userCredential.user.email !== "youradmin@email.com"){
+    // 🔐 ONLY COMPANY ADMIN EMAIL ALLOWED
+    if(userCredential.user.email !== "shangrilaviewhotel@gmail.com"){
       alert("Not authorized");
       auth.signOut();
       return;
