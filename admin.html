@@ -1,0 +1,235 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"><style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6f9;
+}
+
+/* LOGIN PAGE */
+#loginPage {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: #1e293b;
+}
+
+.login-box {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* DASHBOARD */
+#dashboard {
+  display: none;
+}
+
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #1e293b;
+  color: white;
+  position: fixed;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+.main {
+  margin-left: 240px;
+  padding: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.section {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.table {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.feedback, .arrivals {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.logout {
+  margin-top: 30px;
+  padding: 10px;
+  background: red;
+  color: white;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+</style></head>
+<body><!-- LOGIN PAGE --><div id="loginPage">
+  <div class="login-box">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+</div><!-- DASHBOARD --><div id="dashboard">
+  <div class="sidebar">
+    <h2>🏨 Admin Panel</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Bookings</a>
+    <a href="#">Guests</a>
+    <a href="#">Rooms</a>
+    <a href="#">Messages</a>
+    <a href="#">Settings</a>
+    <button class="logout" onclick="logout()">Logout</button>
+  </div>  <div class="main">
+    <h1>Welcome, Admin</h1><div class="cards">
+  <div class="card"><h3>Total Logins</h3><p id="logins">0</p></div>
+  <div class="card"><h3>New Bookings</h3><p id="bookings">0</p></div>
+  <div class="card"><h3>Checked-in</h3><p>0</p></div>
+  <div class="card"><h3>Pending</h3><p>0</p></div>
+</div>
+
+<div class="section">
+  <div class="table">
+    <h3>Recent Bookings</h3>
+    <table>
+      <tr><th>Name</th><th>Room</th><th>Check-in</th><th>Check-out</th></tr>
+      <tbody id="bookingTable"></tbody>
+    </table>
+  </div>
+
+  <div class="feedback">
+    <h3>Guest Feedback</h3>
+    <p>"Great stay!" - Angela</p>
+    <p>"Nice service" - Mark</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="table">
+    <h3>Room Occupancy</h3>
+    <p>(Chart placeholder)</p>
+  </div>
+
+  <div class="arrivals">
+    <h3>Upcoming Arrivals</h3>
+    <ul id="arrivalsList"></ul>
+  </div>
+</div>
+
+  </div>
+</div><script>
+
+// SIMPLE LOGIN SYSTEM
+const adminUser = "admin";
+const adminPass = "1234";
+
+function login() {
+  const user = document.getElementById('username').value;
+  const pass = document.getElementById('password').value;
+
+  if (user === adminUser && pass === adminPass) {
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+  } else {
+    alert('Wrong login details');
+  }
+}
+
+function logout() {
+  document.getElementById('loginPage').style.display = 'flex';
+  document.getElementById('dashboard').style.display = 'none';
+}
+
+// SAMPLE DATA (you will replace with real Firebase later)
+const bookings = [
+  {name: "John Doe", room: "Suite 301", in: "12 May", out: "15 May"},
+  {name: "Sarah", room: "Deluxe", in: "13 May", out: "14 May"}
+];
+
+const arrivals = ["Alex - Deluxe", "Linda - Suite 301"];
+
+// LOAD DATA
+function loadData() {
+  document.getElementById('bookings').innerText = bookings.length;
+  document.getElementById('logins').innerText = Math.floor(Math.random()*100);
+
+  const table = document.getElementById('bookingTable');
+  bookings.forEach(b => {
+    table.innerHTML += `<tr><td>${b.name}</td><td>${b.room}</td><td>${b.in}</td><td>${b.out}</td></tr>`;
+  });
+
+  const list = document.getElementById('arrivalsList');
+  arrivals.forEach(a => {
+    list.innerHTML += `<li>${a}</li>`;
+  });
+}
+
+loadData();
+
+</script></body>
+      </html>
