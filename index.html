@@ -1,4 +1,4 @@
-<div id="loader">Loading...</div>
+<div id="loader">🌕</div>
 
 <div id="content" style="display:none;">
     <!-- your full website here -->
@@ -285,11 +285,23 @@ function toggleMenu() {
   document.getElementById("navLinks").classList.toggle("active");
 }
   <script>
-window.addEventListener("load", function () {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("content").style.display = "block";
+function showSite() {
+    const loader = document.getElementById("loader");
+    const content = document.getElementById("content");
+
+    if (loader) loader.style.display = "none";
+    if (content) content.style.display = "block";
+}
+
+// Run immediately when DOM is ready
+document.addEventListener("DOMContentLoaded", function () {
+    showSite();
 });
-</script>
+
+// Failsafe: if anything blocks loading, force show after 5 seconds
+setTimeout(function () {
+    showSite();
+}, 5000);
 </script>
 
 </body>
