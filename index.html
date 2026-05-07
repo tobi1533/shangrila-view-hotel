@@ -17,7 +17,7 @@
 <meta name="twitter:description" content="Experience luxury and comfort in Port Harcourt.">
 <meta name="twitter:image" content="https://tobi1533.github.io/shangrila-view-hotel/hlogo.png">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 * {
@@ -26,14 +26,29 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: url('hotel4.JPG') no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  overflow-x: hidden;
+/* ===== ROOT COLOR VARIABLES ===== */
+:root {
+  --primary: #C41E3A;
+  --primary-dark: #8B1527;
+  --secondary: #1F3B6F;
+  --accent: #D4AF37;
+  --light: #F5F1E8;
+  --dark: #0a0e1a;
+  --glass: rgba(255, 255, 255, 0.08);
+  --glass-hover: rgba(255, 255, 255, 0.15);
 }
 
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: url('hotel4.JPG') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== MULTI-LAYERED BACKGROUND WITH PARALLAX ===== */
 body::before {
   content: "";
   position: fixed;
@@ -41,11 +56,14 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(5,10,30,0.65);
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(196, 30, 58, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(31, 59, 111, 0.15) 0%, transparent 40%),
+    linear-gradient(180deg, rgba(5, 10, 30, 0.7) 0%, rgba(5, 10, 30, 0.85) 100%);
   z-index: -2;
 }
 
-/* ANIMATED BACKGROUND GLOW */
+/* ===== LIVING AMBIENT EFFECT ===== */
 body::after {
   content: "";
   position: fixed;
@@ -54,52 +72,93 @@ body::after {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 20% 50%, rgba(196, 30, 58, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(31, 59, 111, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 50% 80%, rgba(196, 30, 58, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(196, 30, 58, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(31, 59, 111, 0.1) 0%, transparent 50%);
   z-index: -1;
-  animation: ambientGlow 8s ease-in-out infinite;
+  animation: ambientPulse 12s ease-in-out infinite;
+  pointer-events: none;
 }
 
-@keyframes ambientGlow {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+@keyframes ambientPulse {
+  0%, 100% { 
+    opacity: 0.6;
+    filter: blur(0px);
+  }
+  50% { 
+    opacity: 1;
+    filter: blur(1px);
+  }
 }
 
-/* NAV */
+/* ===== PARTICLE BACKGROUND ANIMATION ===== */
+.particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* ===== NAV WITH 5D GLASS MORPHISM ===== */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(31,59,111,0.6) 100%);
+  background: var(--glass);
   position: relative;
-  backdrop-filter: blur(10px);
-  border-bottom: 3px solid #C41E3A;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   z-index: 1000;
+  animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    backdrop-filter: blur(20px);
+  }
 }
 
 nav img {
   width: 65px;
   border-radius: 50%;
-  box-shadow: 0 0 20px rgba(196, 30, 58, 0.6);
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 0 30px rgba(196, 30, 58, 0.6),
+    0 0 60px rgba(212, 175, 55, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 3px solid rgba(212, 175, 55, 0.4);
 }
 
 nav img:hover {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 0 30px rgba(196, 30, 58, 0.9);
+  transform: scale(1.15) rotate(8deg);
+  box-shadow: 
+    0 0 50px rgba(196, 30, 58, 0.9),
+    0 0 80px rgba(212, 175, 55, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.3);
+  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.6));
 }
 
 nav h2 {
   margin: 0;
-  font-size: 24px;
-  letter-spacing: 1px;
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
+  font-size: 28px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, var(--light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+  font-weight: 900;
 }
 
 nav a {
@@ -107,54 +166,61 @@ nav a {
   text-decoration: none;
   transition: all 0.3s ease;
   position: relative;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
-nav a::after {
+nav a::before {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: -8px;
   left: 0;
   width: 0;
-  height: 2px;
-  background: #C41E3A;
-  transition: width 0.3s ease;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 15px rgba(196, 30, 58, 0.6);
 }
 
 nav a:hover {
-  color: #C41E3A;
-  transform: translateY(-2px);
+  color: var(--accent);
+  transform: translateY(-3px);
 }
 
-nav a:hover::after {
+nav a:hover::before {
   width: 100%;
 }
 
-/* HAMBURGER */
+/* ===== HAMBURGER MENU ===== */
 .menu-toggle {
   font-size: 28px;
   cursor: pointer;
   display: none;
-  color: #C41E3A;
+  color: var(--accent);
   transition: all 0.3s ease;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
 }
 
 .menu-toggle:hover {
-  transform: scale(1.2) rotate(90deg);
+  transform: scale(1.25) rotate(90deg);
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
 }
 
-/* NAV LINKS */
+/* ===== NAV LINKS ===== */
 .nav-links {
   display: flex;
   align-items: center;
+  gap: 30px;
 }
 
 .nav-links a {
-  margin-left: 20px;
+  margin-left: 0;
 }
 
-/* MOBILE */
+/* ===== MOBILE MENU ===== */
 @media (max-width: 768px) {
-
   .menu-toggle {
     display: block;
   }
@@ -163,18 +229,40 @@ nav a:hover::after {
     position: absolute;
     top: 80px;
     right: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(31,59,111,0.9) 100%);
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
     width: 220px;
     display: none;
     padding: 20px;
-    border-left: 3px solid #C41E3A;
-    backdrop-filter: blur(10px);
+    border-left: 3px solid var(--accent);
+    gap: 0;
     z-index: 1001;
+    box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.5);
+    animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   .nav-links a {
-    margin: 10px 0;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    background: rgba(212, 175, 55, 0.1);
   }
 
   .nav-links.active {
@@ -182,74 +270,184 @@ nav a:hover::after {
   }
 }
 
-/* HERO */
+/* ===== HERO SECTION WITH DEPTH ===== */
 .hero {
   height: 100vh;
   background: url('hotelEN.jpg') center/cover no-repeat;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 50%, rgba(196, 30, 58, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 70% 50%, rgba(31, 59, 111, 0.2) 0%, transparent 50%);
+  z-index: 1;
 }
 
 .overlay {
-  background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, rgba(31,59,111,0.6) 100%);
-  padding: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 60px 50px;
   text-align: center;
-  border-radius: 10px;
-  backdrop-filter: blur(15px);
-  border: 2px solid rgba(196, 30, 58, 0.4);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 60px rgba(196, 30, 58, 0.2);
+  position: relative;
+  z-index: 2;
+  animation: zoomInScale 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes zoomInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .overlay h1 {
-  background: linear-gradient(135deg, #fff 0%, #C41E3A 100%);
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent) 0%, white 50%, var(--primary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  animation: fadeInUp 1.2s ease 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.overlay p {
+  font-size: 18px;
+  color: var(--light);
+  margin-bottom: 30px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  animation: fadeInUp 1.2s ease 0.4s both;
 }
 
 .btn {
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
-  padding: 12px 25px;
-  border-radius: 25px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  padding: 15px 35px;
+  border-radius: 30px;
   color: white;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   display: inline-block;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 15px 40px rgba(196, 30, 58, 0.4),
+    0 0 30px rgba(196, 30, 58, 0.2);
   border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+  animation: fadeInUp 1.2s ease 0.6s both;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 20px 50px rgba(196, 30, 58, 0.5);
-  border-color: #C41E3A;
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 
+    0 25px 60px rgba(196, 30, 58, 0.6),
+    0 0 50px rgba(212, 175, 55, 0.4);
+  border-color: var(--accent);
 }
 
-/* SECTION */
+.btn:active {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* ===== SECTION STYLING ===== */
 .section {
-  padding: 60px 0;
+  padding: 80px 40px;
   text-align: center;
   position: relative;
   z-index: 1;
 }
 
 .section h2 {
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, white 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+  animation: fadeInDown 0.8s ease;
 }
 
-/* SLIDER */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== LUXURY SLIDER WITH 5D EFFECTS ===== */
 .slider {
   overflow: hidden;
   width: 100%;
   margin-top: 30px;
   cursor: grab;
+  position: relative;
+  border-radius: 15px;
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .slider:active {
@@ -259,7 +457,7 @@ nav a:hover::after {
 .slide-track {
   display: flex;
   width: calc(320px * 12);
-  animation: scroll 25s linear infinite;
+  animation: scroll 30s linear infinite;
   transition: transform 0.1s ease-out;
 }
 
@@ -271,36 +469,65 @@ nav a:hover::after {
   width: 300px;
   margin: 0 10px;
   flex-shrink: 0;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
+  position: relative;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.3) 0%, transparent 50%);
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
 }
 
 .slide img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 5px;
   display: block;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(196, 30, 58, 0.2);
+  border: 2px solid rgba(212, 175, 55, 0.2);
 }
 
 .slide:hover img {
-  transform: scale(1.08);
-  filter: brightness(1.1);
-  box-shadow: 0 20px 50px rgba(196, 30, 58, 0.3);
+  transform: scale(1.12) perspective(1000px) rotateY(5deg);
+  filter: brightness(1.15) saturate(1.2);
+  box-shadow: 
+    0 30px 80px rgba(196, 30, 58, 0.4),
+    0 0 50px rgba(212, 175, 55, 0.5);
+  border-color: var(--accent);
+}
+
+.slide:hover::before {
+  opacity: 0.5;
 }
 
 .slide h3 {
   margin-top: 10px;
   font-size: 18px;
-  color: #C41E3A;
+  font-weight: 700;
+  color: var(--accent);
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .slide:hover h3 {
-  color: #1F3B6F;
+  color: white;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
 }
 
 @media (max-width: 768px) {
@@ -318,55 +545,78 @@ nav a:hover::after {
   100% { transform: translateX(-50%); }
 }
 
-/* CONTACT */
+/* ===== CONTACT SECTION WITH FROSTED GLASS ===== */
 .contact {
-  background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(31,59,111,0.7) 100%);
-  padding: 60px 40px;
+  background: var(--glass);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  padding: 80px 40px;
   text-align: center;
-  border-top: 2px solid rgba(196, 30, 58, 0.3);
-  border-bottom: 2px solid rgba(196, 30, 58, 0.3);
-  backdrop-filter: blur(10px);
+  border-top: 2px solid rgba(212, 175, 55, 0.3);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 20px 60px rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 1;
 }
 
 .contact h2 {
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, white 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
 }
 
 .contact p {
   font-size: 16px;
-  margin: 10px 0;
+  margin: 15px 0;
   transition: all 0.3s ease;
+  opacity: 0.9;
 }
 
 .contact p:hover {
-  color: #C41E3A;
-  transform: translateX(5px);
+  color: var(--accent);
+  transform: translateX(10px);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
 }
 
 .contact strong {
-  color: #C41E3A;
+  color: var(--accent);
+  font-weight: 700;
 }
 
-/* MAP SECTION */
+/* ===== MAP SECTION ===== */
 .map-section {
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
   position: relative;
   z-index: 1;
 }
 
 .map-section h2 {
-  background: linear-gradient(135deg, #C41E3A 0%, #1F3B6F 100%);
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, white 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.map-section > p {
+  color: var(--accent);
+  margin-bottom: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .map-container {
@@ -374,12 +624,20 @@ nav a:hover::after {
   margin: 20px auto;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(196, 30, 58, 0.2);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  backdrop-filter: blur(10px);
 }
 
 .map-container:hover {
-  box-shadow: 0 30px 70px rgba(196, 30, 58, 0.2);
+  box-shadow: 
+    0 40px 100px rgba(196, 30, 58, 0.4),
+    0 0 80px rgba(212, 175, 55, 0.3);
+  transform: translateY(-10px);
+  border-color: var(--accent);
 }
 
 .map-container a {
@@ -389,24 +647,54 @@ nav a:hover::after {
 
 .map-container iframe {
   width: 100%;
-  height: 300px;
+  height: 400px;
   border: 0;
+  display: block;
 }
 
+/* ===== LOADER WITH 5D STYLE ===== */
 #loader {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: #000;
-  color: #C41E3A;
+  background: linear-gradient(135deg, rgba(5, 10, 30, 0.95) 0%, rgba(31, 59, 111, 0.95) 100%);
+  color: var(--accent);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
   z-index: 9999;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 2px;
+  animation: fadeOut 0.6s ease 4.4s forwards;
 }
 
-/* LIGHTBOX MODAL */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.loader-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(212, 175, 55, 0.2);
+  border-top: 4px solid var(--accent);
+  border-right: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== LIGHTBOX WITH 5D DEPTH ===== */
 .lightbox {
   display: none;
   position: fixed;
@@ -415,13 +703,20 @@ nav a:hover::after {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
-  animation: fadeIn 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.95);
+  animation: fadeInLightbox 0.4s ease;
+  backdrop-filter: blur(8px);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes fadeInLightbox {
+  from { 
+    opacity: 0; 
+    backdrop-filter: blur(0px);
+  }
+  to { 
+    opacity: 1; 
+    backdrop-filter: blur(8px);
+  }
 }
 
 .lightbox-content {
@@ -440,18 +735,22 @@ nav a:hover::after {
   max-width: 100%;
   max-height: 85vh;
   object-fit: contain;
-  border-radius: 10px;
-  box-shadow: 0 0 30px rgba(196, 30, 58, 0.5);
-  animation: zoomIn 0.3s ease;
+  border-radius: 15px;
+  box-shadow: 
+    0 0 50px rgba(196, 30, 58, 0.6),
+    0 30px 80px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: zoomInImage 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2px solid rgba(212, 175, 55, 0.4);
 }
 
-@keyframes zoomIn {
+@keyframes zoomInImage {
   from {
-    transform: scale(0.8);
+    transform: scale(0.7) rotateZ(-5deg);
     opacity: 0;
   }
   to {
-    transform: scale(1);
+    transform: scale(1) rotateZ(0);
     opacity: 1;
   }
 }
@@ -460,17 +759,19 @@ nav a:hover::after {
   position: absolute;
   top: 20px;
   right: 40px;
-  color: #C41E3A;
-  font-size: 40px;
+  color: var(--accent);
+  font-size: 48px;
   font-weight: bold;
   cursor: pointer;
   z-index: 2001;
   transition: all 0.3s ease;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
 }
 
 .lightbox-close:hover {
-  color: #1F3B6F;
-  transform: scale(1.2);
+  color: white;
+  transform: scale(1.3) rotate(90deg);
+  text-shadow: 0 0 40px rgba(212, 175, 55, 0.9);
 }
 
 .lightbox-prev, .lightbox-next {
@@ -478,42 +779,71 @@ nav a:hover::after {
   position: absolute;
   top: 50%;
   width: auto;
-  padding: 16px;
+  padding: 20px;
   margin-top: -22px;
-  color: #C41E3A;
+  color: var(--accent);
   font-weight: bold;
-  font-size: 28px;
-  transition: 0.3s ease;
-  border-radius: 3px;
+  font-size: 32px;
+  transition: all 0.3s ease;
+  border-radius: 10px;
   user-select: none;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 2001;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
 }
 
 .lightbox-prev {
-  left: 10px;
+  left: 20px;
 }
 
 .lightbox-next {
-  right: 10px;
+  right: 20px;
 }
 
 .lightbox-prev:hover, .lightbox-next:hover {
-  background-color: rgba(196, 30, 58, 0.8);
-  color: #fff;
+  background-color: rgba(196, 30, 58, 0.7);
+  color: white;
+  transform: scale(1.2);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
 }
+
+/* ===== SMOOTH SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(196, 30, 58, 0.4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--accent), var(--primary));
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+}
+
 </style>
 
 </head>
 
 <body>
-    <div id="loader">🌕 Loading...</div>
+    <div id="loader">
+      <div class="loader-spinner"></div>
+      <p>Shangri-La View Hotel</p>
+    </div>
 
 <div id="content" style="display:none;">
 
 <!-- NAV -->
 <nav>
-  <div style="display:flex; align-items:center; gap:10px;">
+  <div style="display:flex; align-items:center; gap:15px;">
     <img src="hlogo.png" alt="Logo">
     <h2 style="margin:0;">Shangri-La View Hotel</h2>
   </div>
@@ -574,7 +904,7 @@ nav a:hover::after {
 <!-- MAP -->
 <section style="padding:60px 20px; text-align:center;" class="map-section">
   <h2>Shangrilaview Hotel</h2>
-  <p style="color: #C41E3A; margin-bottom: 30px;">Tap the map for directions</p>
+  <p>Tap the map for directions</p>
 
   <div class="map-container" style="max-width:900px; margin:20px auto; border-radius:15px; overflow:hidden;">
 
@@ -585,7 +915,7 @@ nav a:hover::after {
       <iframe 
         src="https://www.google.com/maps?q=Shangrilaviewhotel&output=embed"
         width="100%" 
-        height="300" 
+        height="400" 
         style="border:0;">
       </iframe>
 
